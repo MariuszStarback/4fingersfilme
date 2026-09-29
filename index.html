@@ -95,7 +95,17 @@
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 100px 20px;
+            padding: 40px 20px 100px 20px;
+        }
+
+        /* Video Container (Showreel zuerst) */
+        .video-section {
+            margin-top: 20px;
+            margin-bottom: 60px;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
 
         /* Sektion Über */
@@ -104,6 +114,7 @@
             flex-direction: column;
             gap: 50px;
             align-items: flex-start;
+            margin-top: 40px;
             margin-bottom: 140px;
         }
 
@@ -143,7 +154,7 @@
             font-weight: 500;
         }
 
-        /* Markenname-Splitting im Fließtext */
+        /* Markenname-Splitting im Fließtext (jetzt komplett kleingeschrieben) */
         .brand-4fingers {
             color: #ffffff; /* Weiß */
             font-weight: 600;
@@ -165,35 +176,26 @@
             box-shadow: 0 12px 40px rgba(0,0,0,0.5);
         }
 
-        /* Navigation zum Video */
-        .video-navigator {
+        /* Navigation zwischen den Sektionen */
+        .section-navigator {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 80px 0;
+            margin: 60px 0;
             text-decoration: none;
             color: var(--muted-text);
             transition: color 0.3s;
         }
 
-        .video-navigator:hover {
+        .section-navigator:hover {
             color: var(--accent-color);
         }
 
-        .video-navigator span {
+        .section-navigator span {
             font-size: 0.8rem;
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 12px;
-        }
-
-        /* Video Container */
-        .video-section {
-            margin-top: 40px;
-            background: #000;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
 
         /* Footer */
@@ -234,20 +236,35 @@
             <img src="logo.png" alt="4FINGERSFILME" class="logo-img">
         </div>
         
-        <a href="#ueber" class="scroll-hint">
-            <span class="scroll-text">Scrollen</span>
+        <a href="#showreel" class="scroll-hint">
+            <span class="scroll-text">Zum Showreel</span>
             <div class="arrow"></div>
         </a>
     </section>
 
     <!-- Content -->
-    <main class="container" id="ueber">
+    <main class="container">
         
+        <!-- Sektion Video -->
+        <section class="video-section" id="showreel">
+            <div style="padding:56.25% 0 0 0;position:relative;">
+                <iframe src="https://player.vimeo.com/video/1231249507?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="SHOWREEL 2026"></iframe>
+            </div>
+            <script src="https://player.vimeo.com/api/player.js"></script>
+        </section>
+
+        <!-- Weiterer Pfeil nach unten zu ÜBER -->
+        <a href="#ueber" class="section-navigator">
+            <span>Über uns</span>
+            <div class="arrow"></div>
+        </a>
+
         <!-- Sektion Über -->
-        <section class="about-section">
+        <section class="about-section" id="ueber">
             <div class="about-text">
                 <h2>Über</h2>
-                <p>Wir sind <span class="brand-4fingers">4fingers</span><span class="brand-filme">filme</span> – eine Video- und Filmproduktion aus Berlin. Wir realisieren visuelle Formate auf höchstem Niveau und kümmern uns dabei um Konzept, Vorproduktion, Dreh und Schnitt: Von markanten Social Media Content, Eventfilmen, Interviews bis hin zu Reportagebeiträgen, Portraits und Dokumentarfilmen.</p>
+                <!-- Hier wurde 4fingers komplett kleingeschrieben -->
+                <p>Wir sind <span class="brand-4fingers">4fingers</span> <span class="brand-filme">filme</span> – eine Video- und Filmproduktion aus Berlin. Wir kümmern um Konzept, Vorproduktion, Dreh und Schnitt und realisieren visuelle Formate auf höchstem Niveau: Von markanten Social Media Content, Eventfilmen, Interviews bis hin zu Reportagebeiträgen, Portraits und Dokumentarfilmen.</p>
                 
                 <p>Außerdem haben wir uns auf professionelle Schauspielvideos, Demoszenen, „About Me“-Formate und Schauspielfotografie spezialisiert. Dabei kreieren wir maßgeschneidertes Material, das Schauspieler:innen optimal repräsentiert und die Aufmerksamkeit von Caster:innen und Agenturen gewinnt.</p>
                 
@@ -257,20 +274,6 @@
             <div class="about-image">
                 <img src="mariusz-staubach.png" alt="Mariusz Staubach - 4FINGERSFILME" class="profile-img">
             </div>
-        </section>
-
-        <!-- Weiterer Pfeil zum Video -->
-        <a href="#video-player" class="video-navigator">
-            <span>Zum Showreel</span>
-            <div class="arrow"></div>
-        </a>
-
-        <!-- Sektion Video mit originalem Vimeo Embed -->
-        <section class="video-section" id="video-player">
-            <div style="padding:56.25% 0 0 0;position:relative;">
-                <iframe src="https://player.vimeo.com/video/1231249507?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="SHOWREEL 2026"></iframe>
-            </div>
-            <script src="https://player.vimeo.com/api/player.js"></script>
         </section>
 
     </main>
