@@ -253,6 +253,33 @@
             <script src="https://player.vimeo.com/api/player.js"></script>
         </section>
 
+ <!-- Weiterer Pfeil nach unten zu WORK -->
+        <a href="#work" class="section-navigator">
+            <span>WORK</span>
+            <div class="arrow"></div>
+        </a>
+
+        <!-- Sektion Work -->
+        <section class="work" id="work">
+            <div class="work">
+                <h2>Über</h2>
+
+ <div class="responsive-iframe">
+<iframe src="https://player.vimeo.com/video/1231685826?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="480" height="320" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="FARBEN_Ausschnitt (Dokumentarfilm)"></iframe>
+
+
+
+<iframe src="https://player.vimeo.com/video/1231683616?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="480" height="320" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Somewhere in Kirgistan_Ausschnitt (Dokumentarfilm)"></iframe>
+
+<iframe src="https://player.vimeo.com/video/1231665306?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="480" height="320" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Knarre_Live @ Fair-Weather Fest (Bremen) 2026"></iframe>
+
+<iframe src="https://player.vimeo.com/video/1231249507?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="480" height="320" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="SHOWREEL 2026"></iframe>
+
+<iframe src="https://player.vimeo.com/video/316150278?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"width="480" height="320" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="The butcher's ears"></iframe>
+
+<iframe src="https://player.vimeo.com/video/870639465?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"width="480" height="320" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Straßentypen"></iframe>
+
+
         <!-- Weiterer Pfeil nach unten zu ÜBER -->
         <a href="#ueber" class="section-navigator">
             <span>Über uns</span>
@@ -266,17 +293,79 @@
 
                 <p>4fingersfilme produziert professionelle Videos – von <b>Dokumentar- und Imagefilmen</b> über <b>Eventfilme</b> bis hin zu hochwertigem <b>Social-Media-Content</b>. Unsere besondere Spezialisierung liegt auf <b>Schauspielvideos</b>. Dabei kreieren wir Formate, wie <b>Demoszenen</b>, <b>Improszenen</b> oder <b>About Me's</b>, die die Aufmerksamkeit von Agenturen und Caster:innen gewinnen. Von der Konzeption über den Dreh bis hin zu Schnitt und Nachbearbeitung übernehmen wir alles Wesentliche. .</p>
                                 
-                <p>Hinter der Produktion steht der Filmemacher Mariusz Staubach. Neben eigenen fiktionalen und dokumentarischen Projekten sammelte er wertvolle Set-Erfahrung als Regieassistent bei großen internationalen Produktionen <em>(z.B Matrix Resurrections, Inventinv Anna, 1899 uvm.)</em> Aktuell arbeitet er an seinem ersten abendfüllenden Spielfilm.</p>
+                <p>Hinter der Produktion steht der Filmemacher Mariusz Staubach. Neben eigenen fiktionalen und dokumentarischen Projekten als Regisseur und Drehbuchautor sammelte er wertvolle Set-Erfahrung als Regieassistent u.a. bei großen internationalen Produktionen <em>(z.B Matrix Resurrections, Inventinv Anna, 1899 uvm.)</em> Aktuell arbeitet er an seinem ersten fiktionalen Spielfilm.</p>
 
-<p>
-<a href="mailto:info@4fingersfilme.de" style="font-size: 24px; font-weight: bold; color: #ffffff; text-decoration: none;">KONTAKT</a>
-</p>
             </div>
 
             <div class="about-image">
                 <img src="mariusz-staubach.png" alt="Mariusz Staubach - 4FINGERSFILME" class="profile-img">
             </div>
         </section>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bildergalerie</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+           
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            aspect-ratio: 4 / 3;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align: center;"><p>
+<a href="mailto:info@4fingersfilme.de" style="font-size: 45px; font-weight: bold; color: #ffffff; text-decoration: none;">KONTAKT</a></h2>
+
+    <div class="gallery">
+        <div class="gallery-item"><img src="pic1.jpg" alt="Bild 1"></div>
+        <div class="gallery-item"><img src="pic2.jpg" alt="Bild 2"></div>
+        <div class="gallery-item"><img src="pic4.jpg" alt="Bild 3"></div>
+        <div class="gallery-item"><img src="pic3.jpg" alt="Bild 4"></div>
+        <div class="gallery-item"><img src="pic5.jpg" alt="Bild 5"></div>
+<div class="gallery-item"><img src="pic6.jpg" alt="Bild 6"></div>
+<div class="gallery-item"><img src="pic7.jpg" alt="Bild 7"></div>
+<div class="gallery-item"><img src="pic9.jpg" alt="Bild 9"></div>
+    </div>
+
+</body>
+</html>
+
+
+
+
+</div>
 
     </main>
 
