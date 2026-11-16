@@ -165,23 +165,6 @@ for (let i = 1; i <= 15; i++) {
     gallery.appendChild(img);
 }
 
-function openPhoto(src) {
-    document.getElementById("largeImage").src = src;
-    document.getElementById("lightbox").classList.add("active");
-}
-
-function closePhoto() {
-    document.getElementById("lightbox").classList.remove("active");
-}
-
-document.getElementById("lightbox").onclick = function(e) {
-    if (e.target === this) closePhoto();
-};
-
-document.addEventListener("keydown", function(e) {
-    if (e.key === "Escape") closePhoto();
-});
-</script>
 
 </body>
 </html>
