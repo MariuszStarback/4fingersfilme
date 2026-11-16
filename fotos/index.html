@@ -4,9 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Fotos | 4Fingers Filme</title>
 
-    
 <style>
 :root {
     --bg-color: #D3D3D9;
@@ -99,6 +99,25 @@ header h1 span {
     cursor: pointer;
 }
 
+/* Kontakt */
+
+footer {
+    text-align: center;
+    margin-top: 55px;
+    padding-bottom: 20px;
+    color: var(--muted-text);
+    font-size: 14px;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 800px) {
     .gallery {
         grid-template-columns: repeat(2, 1fr);
@@ -128,8 +147,8 @@ header h1 span {
     <h1>4FINGERS <span>FOTOS</span></h1>
 </header>
 
+<!-- FOTOGALERIE -->
 
-    
 <main class="gallery">
 
     <img src="Portrait1.jpg" alt="Portrait 1" onclick="openPhoto(this.src)">
@@ -146,34 +165,47 @@ header h1 span {
     <img src="Portrait12.jpg" alt="Portrait 12" onclick="openPhoto(this.src)">
 
 </main>
-<div class="lightbox" id="lightbox">
-    <span class="close" onclick="closePhoto()">&times;</span>
-    <img id="largeImage" src="" alt="Portrait">
-</div>
 
-<script>
-const gallery = document.getElementById("gallery");
+<!-- KONTAKT -->
 
-for (let i = 1; i <= 15; i++) {
-    const img = document.createElement("img");
-    img.src = `Portrait${i}.jpg`;
-    img.alt = `Portrait ${i}`;
-    img.loading = "lazy";
-
-    img.onclick = () => openPhoto(img.src);
-
-    gallery.appendChild(img);
-}
-
-<footer style="text-align: center; margin-top: 55px; padding-bottom: 20px; color: var(--muted-text); font-size: 14px;">
+<footer>
     Kontakt:
-    <a href="mailto:info@4fingersfilme.de"
-       style="color: var(--accent-color); text-decoration: none;">
+    <a href="mailto:info@4fingersfilme.de">
         info@4fingersfilme.de
     </a>
 </footer>
 
-    
-    
+<!-- LIGHTBOX -->
+
+<div class="lightbox" id="lightbox">
+    <span class="close" onclick="closePhoto()">&times;</span>
+    <img id="largeImage" src="" alt="Portrait Großansicht">
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+function openPhoto(src) {
+    document.getElementById("largeImage").src = src;
+    document.getElementById("lightbox").classList.add("active");
+}
+
+function closePhoto() {
+    document.getElementById("lightbox").classList.remove("active");
+}
+
+document.getElementById("lightbox").onclick = function(e) {
+    if (e.target === this) {
+        closePhoto();
+    }
+};
+
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+        closePhoto();
+    }
+});
+</script>
+
 </body>
 </html>
