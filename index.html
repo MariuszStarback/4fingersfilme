@@ -1,579 +1,425 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>4FINGERSFILME – Videograf Berlin | Filmproduktion</title>
-    <style>
-        :root {
-            --bg-color: #D3D3D9;
-            --text-color: #ffffff;
-            --accent-color: #99f3ff; /* Türkis / Cyan aus dem Logo */
-            --muted-text: #8e94a5;   /* Seriöses, feines Grau für den Fließtext */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="4FINGERSFILME – Videograf und Editor aus Berlin. Dokumentarfilm, Imagefilm, Eventfilm und Social-Media-Content.">
+  <title>4FINGERSFILME – Videograf & Editor Berlin</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f3f3f3;
+      --text: #171717;
+      --muted: #666666;
+      --accent: #111111;
+      --line: #e8e8e8;
+      --page-width: 1440px;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 28px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.8;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
+    a { color: inherit; }
 
-        /* Hero / Landing Section */
-        .hero-section {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            padding: 20px;
-            text-align: center;
-        }
+    /* Zurückhaltende, horizontale Kopfzeile mit klarer Trennung zum Inhalt. */
+    .site-header {
+      width: 100%;
+      margin: 0 auto;
+      padding: 15px clamp(24px, 5vw, 72px);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      background: #fff;
+      border-bottom: 1px solid #ededed;
+    }
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 0 0 auto;
+      color: #111;
+      text-decoration: none;
+    }
+    .brand-logo {
+      display: block;
+      height: 2.42rem;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: clamp(22px, 3vw, 40px);
+    }
+    .main-nav a {
+      position: relative;
+      padding: 8px 0;
+      text-decoration: none;
+      color: #555;
+      font-size: .72rem;
+      line-height: 1.4;
+      font-weight: 600;
+      letter-spacing: .10em;
+      transition: color .2s ease;
+    }
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 1px;
+      height: 1px;
+      background: #111;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .2s ease;
+    }
+    .main-nav a:hover, .main-nav a:focus-visible { color: #111; }
+    .main-nav a:hover::after, .main-nav a:focus-visible::after { transform: scaleX(1); }
 
-        /* Logo-Styling */
-        .logo-container {
-            max-width: 450px;
-            width: 75%;
-            height: auto;
-        }
+    /* Das Showreel steht direkt unter dem Kopfbereich. */
+    .showreel-section {
+      display: block;
+      width: 100%;
+      max-width: 100vw;
+      margin: 0;
+      padding: 32px 0 0;
+      overflow: hidden;
+      background: #fff;
+      line-height: 0;
+    }
+    .showreel-frame {
+      position: relative;
+      width: 72%;
+      height: auto;
+      min-height: 0;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+    .showreel-frame iframe {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      border: 0;
+    }
 
-        .logo-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+    .work-jump {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: fit-content;
+      margin: 35px auto 68px;
+      color: #777;
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .28em;
+      transition: color .2s ease;
+    }
+    .work-jump:hover { color: #111; }
+    .arrow {
+      width: 15px;
+      height: 15px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg);
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0) rotate(45deg); }
+      40% { transform: translateY(-7px) rotate(45deg); }
+      60% { transform: translateY(-3px) rotate(45deg); }
+    }
 
-        /* Pfeil- und Scroll-Animationen */
-        .scroll-hint {
-            position: absolute;
-            bottom: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            text-decoration: none;
-            color: var(--muted-text);
-            transition: color 0.3s;
-        }
+    .content-section {
+      width: min(100% - 48px, var(--page-width));
+      margin: 0 auto;
+      padding: 0 0 110px;
+    }
+    .section-heading {
+      margin: 0 0 38px;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 400;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 42px 22px;
+    }
+    .video-card { min-width: 0; }
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      overflow: hidden;
+      background: #000;
+      border-radius: 5px;
+    }
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .video-description h3 {
+      margin: 13px 0 4px;
+      color: var(--text);
+      font-size: .98rem;
+      font-weight: 550;
+      letter-spacing: .02em;
+    }
+    .video-description p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .85rem;
+      line-height: 1.6;
+    }
 
-        .scroll-hint:hover {
-            color: var(--accent-color);
-        }
 
-        .scroll-text {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 8px;
-        }
+    .about-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(260px, .82fr);
+      gap: clamp(36px, 6vw, 90px);
+      align-items: center;
+      padding-bottom: 120px;
+    }
+    .about-section .section-heading { margin-bottom: 24px; }
+    .about-image { min-width: 0; }
+    .profile-img {
+      display: block;
+      width: 100%;
+      max-width: 460px;
+      height: auto;
+      margin-left: auto;
+      object-fit: cover;
+    }
+    .about-text p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: .94rem;
+      line-height: 1.85;
+    }
+    .about-text b { color: var(--text); font-weight: 600; }
 
-        .arrow {
-            width: 18px;
-            height: 18px;
-            border-right: 2px solid currentColor;
-            border-bottom: 2px solid currentColor;
-            transform: rotate(45deg);
-            animation: bounce 2s infinite;
-        }
+    .contact-section {
+      padding: 54px 24px 70px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .contact-section .section-heading { margin-bottom: 12px; }
+    .contact-link {
+      display: inline-block;
+      color: #171717;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      letter-spacing: .04em;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s ease;
+    }
+    .contact-link:hover { border-color: currentColor; }
+    .footer {
+      width: min(100% - 48px, var(--page-width));
+      margin: 0 auto;
+      padding: 24px 0 36px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: .8rem;
+    }
+    .footer a { text-decoration: none; }
+    .footer a:hover { color: #111; }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) rotate(45deg); }
-            40% { transform: translateY(-10px) rotate(45deg); }
-            60% { transform: translateY(-5px) rotate(45deg); }
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px 100px 20px;
-        }
-
-        /* Video Container (Showreel zuerst) */
-        .video-section {
-            margin-top: 20px;
-            margin-bottom: 60px;
-            background: #000;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-        }
-
-        /* Sektion Über */
-        .about-section {
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-            align-items: flex-start;
-            margin-top: 40px;
-            margin-bottom: 140px;
-        }
-
-        @media (min-width: 768px) {
-            .about-section {
-                flex-direction: row;
-                align-items: flex-start;
-                gap: 80px;
-            }
-            .about-text {
-                flex: 1.4;
-            }
-            .about-image {
-                flex: 1.0; 
-                /* Schiebt das Bild visuell nach unten auf Höhe der 7. Zeile / 2. Absatz */
-                margin-top: 110px; 
-            }
-        }
-
-        h2 {
-            font-size: 2rem;
-            font-weight: 400;
-            letter-spacing: 2px;
-            margin-bottom: 35px;
-            text-transform: uppercase;
-        }
-
-        p {
-            color: var(--muted-text);
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-            letter-spacing: 0.3px;
-        }
-
-        .highlight {
-            color: var(--text-color);
-            font-weight: 500;
-        }
-
-        /* Markenname-Splitting im Fließtext (jetzt komplett kleingeschrieben) */
-        .brand-4fingers {
-            color: #ffffff; /* Weiß */
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .brand-filme {
-            color: var(--accent-color); /* Türkis */
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        /* Profilbild Styling */
-        .profile-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 12px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-        }
-
-        /* Navigation zwischen den Sektionen */
-        .section-navigator {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 60px 0;
-            text-decoration: none;
-            color: var(--muted-text);
-            transition: color 0.3s;
-        }
-
-        .section-navigator:hover {
-            color: var(--accent-color);
-        }
-
-        .section-navigator span {
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: 140px;
-            padding-top: 40px;
-            border-top: 1px solid #161a22;
-            text-align: center;
-        }
-
-        .footer p {
-            font-size: 0.9rem;
-        }
-
-        .footer a {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer a:hover {
-            color: var(--accent-color);
-        }
-
-        .footer .impressum {
-            display: block;
-            margin-top: 15px;
-            font-size: 0.8rem;
-            color: var(--muted-text);
-        }
-    </style>
+    @media (max-width: 900px) {
+      .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) {
+      .showreel-section { padding-top: 20px; }
+      .showreel-frame { min-height: 0; }
+      .site-header {
+        width: 100%;
+        min-height: 0;
+        padding: 14px 16px 12px;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .brand-logo {
+        height: 1.28rem;
+      }
+      .main-nav { width: 100%; justify-content: center; gap: clamp(16px, 5vw, 25px); }
+      .main-nav a { font-size: .62rem; letter-spacing: .10em; }
+      .content-section { width: calc(100% - 32px); padding-bottom: 80px; }
+      .video-grid { grid-template-columns: 1fr; gap: 34px; }
+      .about-section {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding-bottom: 80px;
+      }
+      .about-image { grid-row: 2; }
+      .profile-img { max-width: 100%; margin: 0; }
+      .footer { width: calc(100% - 32px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .arrow { animation: none; }
+      * { transition-duration: .01ms !important; }
+    }
+  </style>
 </head>
-<body>
+<body id="top">
+  <main>
+    <!-- Kompakte Kopfzeile mit Logo links und Navigation rechts. -->
+    <header class="site-header">
+      <a class="brand-lockup" href="#top" aria-label="4FingersFilme – Startseite">
+        <img class="brand-logo" src="4fingerslogo.jpg" alt="4FingersFilme">
+      </a>
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <a href="#work">Work</a>
+        <a href="https://www.4fingersfilme.de/fotos">Foto</a>
+        <a href="#ueber">Über</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </header>
 
-    <!-- Hero / Landing -->
-    <section class="hero-section">
-        <div class="logo-container">
-            <img src="logo.png" alt="4FINGERSFILME" class="logo-img">
-        </div>
-        
-        <a href="#showreel" class="scroll-hint">
-            <span class="scroll-text">Zum Showreel</span>
-            <div class="arrow"></div>
-        </a>
+    <!-- Showreel direkt unter der Hauptnavigation. -->
+    <section class="showreel-section" id="showreel" aria-label="Showreel 2026">
+      <div class="showreel-frame">
+        <iframe
+          src="https://player.vimeo.com/video/1231249507?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="SHOWREEL 2026">
+        </iframe>
+      </div>
     </section>
 
-<!-- Sektion Video -->
-<section class="video-section" id="showreel" style="width: 85%; max-width: 85%; margin: 0 auto; overflow: hidden;">
-    <div style="position: relative; width: 100%; aspect-ratio: 16 / 9;">
-        <iframe src="https://player.vimeo.com/video/1231249507?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                frameborder="0" 
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                referrerpolicy="strict-origin-when-cross-origin" 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;" 
-                title="SHOWREEL 2026">
-        </iframe >
-    </div>
-</section>
-<script src="https://player.vimeo.com/api/player.js"></script>
 
- <!-- Weiterer Pfeil nach unten zu WORK -->
-        <a href="#work" class="section-navigator">
-            <span>WORK</span>
-            <div class="arrow"></div>
-        </a>
+    <!-- Der Pfeil führt vom Showreel direkt zur Auswahl der weiteren Filme. -->
+    <a href="#work" class="work-jump">
+      <span>WORK</span>
+      <span class="arrow" aria-hidden="true"></span>
+    </a>
 
-    <!-- Sektion Work -->
-<section class="work" id="work" style="padding: 20px 15px;">
-    <h2>WORK</h2>
+    <section class="content-section" id="work">
+      <h1 class="section-heading">WORK</h1>
+      <div class="video-grid">
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://player.vimeo.com/video/1231685826?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Farben AT – Dokumentarfilm"></iframe>
+          </div>
+          <div class="video-description">
+            <h3>Farben AT (2026)</h3>
+            <p>Dokumentarfilm über eine Musikerin mit multipler Synästhesie</p>
+          </div>
+        </article>
 
-      <style>
-        .work {
-            padding: 20px 15px;
-        }
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://player.vimeo.com/video/1231665306?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Knarre – Konzertfilm"></iframe>
+          </div>
+          <div class="video-description">
+            <h3>Knarre – Konzertfilm (2026)</h3>
+            <p>Live-Gig der Skramz-Pop-Band Knarre beim Fair Weather Fest Bremen 2026</p>
+          </div>
+        </article>
 
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            width: 100%;
-        }
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://player.vimeo.com/video/583409384?h=b2bfb79088" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Schattenpandemie – Kurzspielfilm"></iframe>
+          </div>
+          <div class="video-description">
+            <h3>Schattenpandemie (2022)</h3>
+            <p>Kurzspielfilm über häusliche Gewalt während des ersten Covid-19-Lockdowns</p>
+          </div>
+        </article>
 
-        .video-item {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-        }
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://player.vimeo.com/video/1231683616?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Somewhere in Kyrgyzstan – Dokumentarfilm"></iframe>
+          </div>
+          <div class="video-description">
+            <h3>Somewhere in Kyrgyzstan (2025)</h3>
+            <p>Dokumentarfilm über eine Bauernfamilie in einem abgelegenen Dorf in Kirgistan</p>
+          </div>
+        </article>
 
-        .video-item iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            border-radius: 8px;
-        }
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://player.vimeo.com/video/316150278?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="The Butcher's Ears – Kurzspielfilm"></iframe>
+          </div>
+          <div class="video-description">
+            <h3>The Butcher's Ears (2016)</h3>
+            <p>Kurzspielfilm über einen gehörlosen Metzger</p>
+          </div>
+        </article>
 
-        .social-media-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 200px));
-            gap: 12px;
-            width: 100%;
-            max-width: none;
-            margin: 0;
-        }
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://player.vimeo.com/video/1238583620?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Online Music Academy – Testimonial und Eventfilm"></iframe>
+          </div>
+          <div class="video-description">
+            <h3>Online Music Academy (2026)</h3>
+            <p>Testimonial und Eventfilm für eine internationale Online-Musikschule</p>
+          </div>
+        </article>
 
-        .social-media-item {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 9 / 16;
-        }
-
-        .social-media-item iframe {
-            position: absolute;
-            inset: 0;
-            width: 85%;
-            height: 85%;
-            border: 0;
-            border-radius: 8px;
-        }
-
-        @media (max-width: 480px) {
-            .social-media-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                max-width: 360px;
-                gap: 8px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-<section class="work" id="work">
-    
-
-    <div class="video-grid">
-        <!-- Video 1 -->
-        <div class="video-item">
-            <iframe
-                src="https://player.vimeo.com/video/1231685826?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                title="FARBEN_Ausschnitt (Dokumentarfilm) Videograf Berlin">
-            </iframe>
-        </div>
-
-<figure> 
-<figcaption class="video-description">
-    <h3>Farben AT (2026)</h3>
-    <p>
-      Dokumentarfilm über Musikerin mit multipler Synästhesie
-    </p>
-  </figcaption>
-</figure>
-
-        <!-- Video 2 -->
-        <div class="video-item">
-            <iframe
-                src="https://player.vimeo.com/video/1231665306?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                title="Knarre_Live @ Fair-Weather Fest (Bremen) 2026 Videograf Berlin">
-            </iframe>
-        </div>
-
-<figure> 
-<figcaption class="video-description">
-    <h3>Knarre - Konzertfilm (2026) </h3>
-    <p>
-      Live Gig der Skramz-Pop Band Knarre @ Fair Weather Fest Bremen 26
-    </p>
-  </figcaption>
-</figure>
-
-     
-  <!-- Video 6 -->
-        <div class="video-item">
-            <iframe
-                src="https://player.vimeo.com/video/583409384?h=b2bfb79088"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                title="vimeo-player">
-            </iframe>
-        </div>
-
-<figure> 
-<figcaption class="video-description">
-    <h3>Schattenpandemie (2022) </h3>
-    <p>
-      Kurzspielfilm über häusliche Gewalt während des ersten Covid19 Lockdowns
-    </p>
-  </figcaption>
-</figure>
-
-        <!-- Video 4 -->
-        <div class="video-item">
-            <iframe
-                src="https://player.vimeo.com/video/1231683616?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                title="Somewhere in Kirgistan_Ausschnitt (Dokumentarfilm) Videograf Berlin">
-            </iframe>
-        </div>
-
-<figure> 
-<figcaption class="video-description">
-    <h3>Somewhere in Kyrgyzstan (2025) </h3>
-    <p>
-      Dokumentarfilm über Bauernfamilie in einem abgelegenen Dorf in Kirgistan
-    </p>
-  </figcaption>
-</figure>
-
-        <!-- Video 5 -->
-        <div class="video-item">
-            <iframe
-                src="https://player.vimeo.com/video/316150278?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                title="The butcher's ears_Videograf Berlin">
-            </iframe>
-        </div>
-
-<figure> 
-<figcaption class="video-description">
-    <h3>The Butcher's Ears (2016) </h3>
-    <p>
-      Kurzspielfilm über gehörlosen Metzger
-    </p>
-  </figcaption>
-</figure>
-
-      
-
-        <!-- Video 7 -->
-        <div class="video-item">
-            <iframe
-                src="https://player.vimeo.com/video/1238583620?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                title="vimeo-player">
-            </iframe>
-        </div>
-    
-<figure> 
-<figcaption class="video-description">
-    <h3>Online Music Academy (2026) </h3>
-    <p>
-      Testimonial & Eventfilm für internationale Online-Musikschule
-    </p>
-  </figcaption>
-</figure>
-
-  <!-- Video 3 -->
-        <div class="video-item">
-            <iframe
-                src="https://player.vimeo.com/video/870639465?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                title="Straßentypen_Videograf Berlin">
-            </iframe>
-        </div>
-
-<figure> 
-<figcaption class="video-description">
-    <h3>Straßentypen - (2014) </h3>
-    <p>
-      Reportage über Wohnungslosigkeit und Notunterkünfte in Berlin
-    </p>
-  </figcaption>
-</figure>
+        <article class="video-card">
+          <div class="video-frame">
+            <iframe src="https://player.vimeo.com/video/870639465?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Straßentypen – Reportage"></iframe>
+          </div>
+          <div class="video-description">
+            <h3>Straßentypen (2014)</h3>
+            <p>Reportage über Wohnungslosigkeit und Notunterkünfte in Berlin</p>
+          </div>
+        </article>
+      </div>
+    </section>
 
 
-<br>
-<p>
+    <section class="content-section about-section" id="ueber">
+      <div class="about-text">
+        <h2 class="section-heading">ÜBER</h2>
+        <p>4fingersfilme produziert professionelle Videos – von <b>Dokumentar- und Imagefilmen</b> über <b>Eventfilme</b> bis hin zu hochwertigem <b>Social-Media-Content</b>. Am liebsten arbeiten wir dokumentarisch mit Fokus auf soziale Themen und authentischen Charakteren mit eindrucksvollen Lebensgeschichten. Unsere besondere Spezialisierung liegt auf <b>Schauspielvideos</b>. Dabei kreieren wir Formate wie <b>Demoszenen</b>, <b>Improszenen</b> oder <b>About Me's</b>, die die Aufmerksamkeit von Agenturen und Caster:innen gewinnen. Von der Konzeption über den Dreh bis hin zu Schnitt und Nachbearbeitung übernehmen wir alles Wesentliche.</p>
+        <p>Hinter der 4Fingersfilme steht der Filmemacher und Videograf Mariusz Staubach aus Berlin. Neben eigenen fiktionalen und dokumentarischen Projekten als Regisseur und Drehbuchautor sammelte er wertvolle Set-Erfahrung als Regieassistent, unter anderem bei großen internationalen Produktionen (<em>z. B. Matrix Resurrections, Inventing Anna, 1899</em> u. v. m.). Durch sein langjähriges Interesse für den post-sowjetischen Raum erlernte Mariusz die russische Sprache, um Protagonisten und Interviewpartnern auf Augenhöhe gegenüberzutreten. Aktuell arbeitet er an seinem ersten fiktionalen Spielfilm.</p>
+      </div>
+      <div class="about-image">
+        <img src="mariusz-staubach.png" alt="Mariusz Staubach – Filmemacher und Videograf" class="profile-img" loading="lazy" decoding="async">
+      </div>
+    </section>
 
+    <section class="contact-section" id="kontakt">
+      <h2 class="section-heading">KONTAKT</h2>
+      <a class="contact-link" href="mailto:info@4fingersfilme.de">info@4fingersfilme.de</a>
+    </section>
+  </main>
 
-   
-
-</section>
-
-        <!-- Weiterer Pfeil nach unten zu ÜBER -->
-        <a href="#ueber" class="section-navigator">
-            <span>Über uns</span>
-            <div class="arrow"></div>
-        </a>
-
-        <!-- Sektion Über -->
-        <section class="about-section" id="ueber">
-            <div class="about-text">
-                <h2>Über</h2>
-
-                <p>4fingersfilme produziert professionelle Videos – von <b>Dokumentar- und Imagefilmen</b> über <b>Eventfilme</b> bis hin zu hochwertigem <b>Social-Media-Content</b>. Am liebsten arbeiten wir dokumentarisch mit Fokus auf soziale Themen und authentischen Charakteren mit eindrucksvollen Lebensgeschichten. Unsere besondere Spezialisierung liegt auf <b>Schauspielvideos</b>. Dabei kreieren wir Formate, wie <b>Demoszenen</b>, <b>Improszenen</b> oder <b>About Me's</b>, die die Aufmerksamkeit von Agenturen und Caster:innen gewinnen. Von der Konzeption über den Dreh bis hin zu Schnitt und Nachbearbeitung übernehmen wir alles Wesentliche. .</p>
-                                
-                <p>Hinter der 4Fingersfilme steht der Filmemacher und Videograf Mariusz Staubach aus Berlin. Neben eigenen fiktionalen und dokumentarischen Projekten als Regisseur und Drehbuchautor sammelte er wertvolle Set-Erfahrung als Regieassistent u.a. bei großen internationalen Produktionen <em>(z.B Matrix Resurrections, Inventinv Anna, 1899 uvm.)</em> Durch sein langjähriges Interesse für den post-sowjetischen Raum erlernte Mariusz die russische Sprache, um Protagonisten und Interviewpartnern auf Augenhöhe gegenüberzutreten. Aktuell arbeitet er an seinem ersten fiktionalen Spielfilm.</p>
-
-            </div>
-
-            <div class="about-image">
-                <img src="mariusz-staubach.png" alt="Mariusz Staubach - 4FINGERSFILME" class="profile-img">
-            </div>
-        </section>
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bildergalerie</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 20px;
-           
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .gallery-item {
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            aspect-ratio: 4 / 3;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-            display: block;
-        }
-        .gallery-item img:hover {
-            transform: scale(1.05);
-        }
-    </style>
-</head>
-<body>
-
-    <h2 style="text-align: center;"><p>
-<a href="mailto:info@4fingersfilme.de" style="font-size: 60px; font-weight: bold; color: #ffffff; text-decoration: none;">KONTAKT</a></h2>
-
-    <div class="gallery">
-        <div class="gallery-item"><img src="pic1.jpg" alt="Videograf Berlin_1"></div>
-        <div class="gallery-item"><img src="pic2.jpg" alt="Videograf Berlin_2"></div>
-        <div class="gallery-item"><img src="pic4.jpg" alt="Videograf Berlin_3"></div>
-        <div class="gallery-item"><img src="pic3.jpg" alt="Videograf Berlin_4"></div>
-        <div class="gallery-item"><img src="pic5.jpg" alt="Videograf Berlin_5"></div>
-<div class="gallery-item"><img src="pic6.jpg" alt="Videograf Berlin_6"></div>
-<div class="gallery-item"><img src="pic7.jpg" alt="Videograf Berlin_7"></div>
-<div class="gallery-item"><img src="pic9.jpg" alt="Videograf Berlin_8"></div>
-<div class="gallery-item"><img src="pic10.jpg" alt="Videograf Berlin_10"></div>
-
-
-    </div>
-
-</body>
-</html>
-
-
-
-
-</div>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>Anfragen an <a href="mailto:info@4fingersfilme.de">info@4fingersfilme.de</a></p>
-        <a href="impressum.html" class="impressum">Impressum</a>
-    </footer>
-
+  <footer class="footer">
+    <span>© 4FINGERSFILME</span>
+    <a href="impressum.html">Impressum</a>
+  </footer>
 </body>
 </html>
